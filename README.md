@@ -60,6 +60,10 @@ Develop some tests of the rest endpoint that validates the following requests of
 - TDD
 - JUnit / Mockito
 - DDD
-- Hexagonal Arquitecture
-- CQRS 
+- Hexagonal architecture
+- CQRS architecture
 - Aspect for loging envents 
+
+
+## NOTE: 
+The "create price" and "update price" methods are to be able to visualize the implementation of the CQRS architecture
