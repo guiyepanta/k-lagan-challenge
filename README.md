@@ -48,7 +48,7 @@ Develop some tests of the rest endpoint that validates the following requests of
 
 # SOLUTION:
 
-###Microservice developed with:
+### Microservice developed with:
 
 - Java 17
 - Springboot 
@@ -56,7 +56,7 @@ Develop some tests of the rest endpoint that validates the following requests of
 - JPA
 - OpenApi-doc / Swagger-ui
 
-###It was used:
+### It was used:
 - TDD
 - JUnit / Mockito
 - DDD
