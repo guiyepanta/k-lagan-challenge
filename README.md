@@ -48,13 +48,18 @@ Develop some tests of the rest endpoint that validates the following requests of
 
 # SOLUTION:
 
-Microservicio desarrollado con Springboot + Java 17 + Maven + JPA. Para testear la aplicación se utiliza JUnit y Mockito
+###Microservice developed with:
 
-Se aplica las siguientes ....
+- Java 17
+- Springboot 
+- Maven
+- JPA
+- OpenApi-doc / Swagger-ui
 
+###It was used:
 - TDD
+- JUnit / Mockito
 - DDD
 - Hexagonal Arquitecture
 - CQRS 
 - Aspect for loging envents 
-- Cache
