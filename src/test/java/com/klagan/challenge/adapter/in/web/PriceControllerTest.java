@@ -68,4 +68,65 @@ class PriceControllerTest {
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(4));
     }
+
+    @Test
+    @DisplayName("Test 06: create price")
+    void test06() throws Exception {
+
+	// GIVEN
+	String contentBody = "{\r\n" + "    \"brandId\": 2,\r\n" + "    \"startDate\": \"2020-06-15 00:00:00\",\r\n"
+		+ "    \"endDate\": \"2020-06-15 11:00:00\",\r\n" + "    \"priceList\": 5,\r\n"
+		+ "    \"productId\": 111111,\r\n" + "    \"priority\": 0,\r\n" + "    \"price\": 20000.99,\r\n"
+		+ "    \"curr\": \"ARS\"\r\n" + "}";
+
+	mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/price").content(contentBody)
+		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated())
+		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(2))
+		.andExpect(MockMvcResultMatchers.jsonPath("$.curr").value("ARS"));
+
+    }
+
+    @Test
+    @DisplayName("Test 03: update price")
+    void test07() throws Exception {
+
+	// GIVEN
+	String contentBody = "{\r\n" + "    \"brandId\": 2,\r\n" + "    \"startDate\": \"2020-06-15 00:00:00\",\r\n"
+		+ "    \"endDate\": \"2020-06-15 11:00:00\",\r\n" + "    \"priceList\": 5,\r\n"
+		+ "    \"productId\": 111111,\r\n" + "    \"priority\": 0,\r\n" + "    \"price\": 10000.99,\r\n"
+		+ "    \"curr\": \"ARS\"\r\n" + "}";
+
+	mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/price/6").content(contentBody)
+		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(2))
+		.andExpect(MockMvcResultMatchers.jsonPath("$.curr").value("ARS"))
+		.andExpect(MockMvcResultMatchers.jsonPath("$.price").value(Float.valueOf("10000.99")));
+
+    }
+
+    @Test
+    @DisplayName("Test 04: Get price NOT_FOUND")
+    void test08() throws Exception {
+
+	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-14 10:00:00/99999/1")
+		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound())
+		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    @DisplayName("Test 05: update price BAD_REQUEST: without name")
+    void test09() throws Exception {
+
+	// GIVEN
+	String contentBodyWithoutName = "{\r\n" + "    \"startDate\": \"2020-06-15 00:00:00\",\r\n"
+		+ "    \"endDate\": \"2020-06-15 11:00:00\",\r\n" + "    \"priceList\": 12,\r\n"
+		+ "    \"productId\": 35455,\r\n" + "    \"priority\": 9,\r\n" + "    \"price\": 30.5,\r\n"
+		+ "    \"curr\": \"USD\"\r\n" + "}";
+
+	mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/price/6").content(contentBodyWithoutName)
+		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
+		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
 }
