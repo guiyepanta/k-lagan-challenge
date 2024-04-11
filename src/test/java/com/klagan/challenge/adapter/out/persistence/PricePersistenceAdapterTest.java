@@ -53,8 +53,7 @@ class PricePersistenceAdapterTest {
 	Integer brandId = 1;
 
 	when(repository
-		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(
-			applicationDate, applicationDate, productId, brandId))
+		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(applicationDate, applicationDate, productId, brandId))
 		.thenReturn(optionalPriceMock);
 
 	Price result = adapter.getPriceBy(applicationDate, productId, brandId);
@@ -76,8 +75,7 @@ class PricePersistenceAdapterTest {
 	Integer brandId = 1;
 
 	when(repository
-		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(
-			applicationDate, applicationDate, productId, brandId))
+		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(applicationDate, applicationDate, productId, brandId))
 		.thenReturn(optionalPriceMock);
 
 	// THEN

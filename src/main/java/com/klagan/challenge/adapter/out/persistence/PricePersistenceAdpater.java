@@ -23,8 +23,7 @@ public class PricePersistenceAdpater implements QueryPricePort, CommandPricePort
     @Override
     public Price getPriceBy(LocalDateTime filterDate, Integer productId, Integer brandId) {
 	return repository
-		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(
-			filterDate, filterDate, productId, brandId)
+		.findTopByEndDateGreaterThanEqualAndStartDateLessThanEqualAndProductIdAndBrandIdOrderByPriorityDesc(filterDate, filterDate, productId, brandId)
 		.map(PriceMapper::entityToDomain).orElseThrow(() -> new PriceNotFoundException("Price not found."));
     }
 

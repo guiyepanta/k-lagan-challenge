@@ -24,7 +24,8 @@ class PriceControllerTest {
     void test01() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-14 10:00:00/35455/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }
@@ -34,7 +35,8 @@ class PriceControllerTest {
     void test02() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-14 16:00:00/35455/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(2));
     }
@@ -44,7 +46,8 @@ class PriceControllerTest {
     void test03() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-14 21:00:00/35455/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }
@@ -54,7 +57,8 @@ class PriceControllerTest {
     void test04() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-15 10:00:00/35455/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(3));
     }
@@ -64,7 +68,8 @@ class PriceControllerTest {
     void test05() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-16 21:00:00/35455/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(4));
     }
@@ -86,7 +91,8 @@ class PriceControllerTest {
 		+ "}";
 
 	mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/price").content(contentBody)
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isCreated())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(2))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.curr").value("ARS"));
@@ -110,7 +116,8 @@ class PriceControllerTest {
 		+ "}";
 
 	mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/price/6").content(contentBody)
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(2))
 		.andExpect(MockMvcResultMatchers.jsonPath("$.curr").value("ARS"))
@@ -123,7 +130,8 @@ class PriceControllerTest {
     void test08() throws Exception {
 
 	mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/price/2020-06-14 10:00:00/99999/1")
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isNotFound())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
@@ -143,7 +151,8 @@ class PriceControllerTest {
 		+ "}";
 
 	mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/price/6").content(contentBodyWithoutName)
-		.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
+		.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isBadRequest())
 		.andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 }

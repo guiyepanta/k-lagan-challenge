@@ -26,8 +26,8 @@ public class PriceServiceTest {
     PriceService service;
 
     @Test
-    @DisplayName("Caso 01: Test consulta con JPA response 200")
-    public void consultaJPAtest01() throws Exception {
+    @DisplayName("Test 01: Test get Price - Response 200 (ok)")
+    public void test01() throws Exception {
 	// GIVEN
 	Price priceMock = new Price();
 	priceMock.setId(1);

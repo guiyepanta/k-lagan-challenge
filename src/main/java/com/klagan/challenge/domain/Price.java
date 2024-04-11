@@ -22,12 +22,15 @@ public class Price implements Serializable {
 
     private Integer id;
     private Integer brandId;
+    
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startDate;
+    
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endDate;
+    
     private Integer priceList;
     private Integer productId;
     private Integer priority;

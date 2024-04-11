@@ -38,7 +38,8 @@ public class PriceController {
     @GetMapping("/price/{applicationDate}/{productId}/{brandId}")
     public ResponseEntity<Price> getPriceBy(
 	    @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime applicationDate,
-	    @PathVariable @Min(0) Integer productId, @PathVariable @Min(0) Integer brandId) {
+	    @PathVariable @Min(0) Integer productId,
+	    @PathVariable @Min(0) Integer brandId) {
 
 	Price response = pricePort.getPriceBy(applicationDate, productId, brandId);
 	return new ResponseEntity<Price>(response, HttpStatus.OK);
