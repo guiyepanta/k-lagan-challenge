@@ -65,5 +65,6 @@ Develop some tests of the rest endpoint that validates the following requests of
 - Aspect for loging envents 
 
 
-## NOTE: 
-The "create price" and "update price" methods are to be able to visualize the implementation of the CQRS architecture
+## NOTES: 
+- The "create price" and "update price" methods are to be able to visualize the implementation of the CQRS architecture
+- H2 is used as a database in memory to complete the exercise. In a real development situation, this type of database is not recommended, because the information is stored in memory and it would be dangerous for the health of the application if the number of records is very large. 
